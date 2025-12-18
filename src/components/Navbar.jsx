@@ -63,23 +63,36 @@ const Navbar = ({ onLogoClick }) => {
     <header className={`header ${scrolled ? 'scrolled' : ''}`}>
       <nav className="navbar">
         <div className="logo" onClick={handleLogoClick} style={{ cursor: onLogoClick ? 'pointer' : 'default' }}>
-          <svg width="180" height="50" viewBox="0 0 180 50" fill="none" xmlns="http://www.w3.org/2000/svg" className="logo-svg">
+          <svg width="200" height="60" viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="logo-svg">
             <defs>
-              <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" className="gradient-stop-1" />
                 <stop offset="50%" className="gradient-stop-2" />
                 <stop offset="100%" className="gradient-stop-3" />
               </linearGradient>
             </defs>
 
-            <text x="5" y="22" fontFamily="Arial, sans-serif" fontSize="20" fontWeight="800" fill="url(#textGradient)">Oswald</text>
-            <text x="5" y="42" fontFamily="Arial, sans-serif" fontSize="20" fontWeight="800" fill="url(#textGradient)">Stack</text>
+            {/* Oswald text */}
+            <text x="10" y="38" fontFamily="'Arial Black', sans-serif" fontSize="36" fontWeight="900" fill="url(#textGradient)" letterSpacing="-1">Oswald</text>
 
-            <g transform="translate(100, 28)">
-              <path d="M 0,0 L 8,4 L 8,12 L 0,8 Z" className="cube-face-1" />
-              <path d="M 8,4 L 16,0 L 16,8 L 8,12 Z" className="cube-face-2" />
-              <path d="M 0,0 L 8,4 L 16,0 L 8,-4 Z" className="cube-face-3" />
+            {/* Stack text with integrated cubes */}
+            <text x="10" y="72" fontFamily="'Arial Black', sans-serif" fontSize="36" fontWeight="900" fill="url(#textGradient)" letterSpacing="-1">St</text>
+
+            {/* 3D Stacked Cubes (replacing 'a' in Stack) */}
+            <g transform="translate(70, 48)">
+              {/* Bottom cube */}
+              <path d="M 0,12 L 10,6 L 10,16 L 0,22 Z" className="cube-left" />
+              <path d="M 10,6 L 20,12 L 20,22 L 10,16 Z" className="cube-right" />
+              <path d="M 0,12 L 10,6 L 20,12 L 10,18 Z" className="cube-top" />
+
+              {/* Top cube */}
+              <path d="M 0,0 L 10,-6 L 10,4 L 0,10 Z" className="cube-left" />
+              <path d="M 10,-6 L 20,0 L 20,10 L 10,4 Z" className="cube-right" />
+              <path d="M 0,0 L 10,-6 L 20,0 L 10,6 Z" className="cube-top" />
             </g>
+
+            {/* Continue 'ck' after cubes */}
+            <text x="100" y="72" fontFamily="'Arial Black', sans-serif" fontSize="36" fontWeight="900" fill="url(#textGradient)" letterSpacing="-1">ck</text>
           </svg>
         </div>
 
@@ -136,7 +149,7 @@ const Navbar = ({ onLogoClick }) => {
         }
 
         .logo-svg {
-          height: 45px;
+          height: 50px;
           width: auto;
           transition: transform 0.3s ease;
         }
@@ -146,7 +159,7 @@ const Navbar = ({ onLogoClick }) => {
         }
 
         .header.scrolled .logo-svg {
-          height: 40px;
+          height: 42px;
         }
 
         /* Dynamic color animation for gradient stops */
@@ -186,24 +199,25 @@ const Navbar = ({ onLogoClick }) => {
           animation: colorShift 8s ease-in-out infinite 5.2s;
         }
 
-        /* Cube faces with dynamic colors */
-        .cube-face-1 {
+        /* Cube faces with dynamic colors - matching original design */
+        .cube-left {
           fill: #ff1cf7;
-          opacity: 0.8;
+          opacity: 0.7;
           animation: colorShift 8s ease-in-out infinite;
         }
 
-        .cube-face-2 {
+        .cube-right {
           fill: #b249f8;
-          opacity: 0.9;
+          opacity: 0.85;
           animation: colorShift 8s ease-in-out infinite 2.6s;
         }
 
-        .cube-face-3 {
+        .cube-top {
           fill: #a142f4;
           opacity: 1;
           animation: colorShift 8s ease-in-out infinite 5.2s;
         }
+        
         
         
         
