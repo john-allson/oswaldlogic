@@ -75,6 +75,14 @@ const Navbar = ({ onLogoClick }) => {
             {/* Oswald text */}
             <text x="10" y="38" fontFamily="'Arial Black', sans-serif" fontSize="36" fontWeight="900" fill="url(#textGradient)" letterSpacing="-1">Oswald</text>
 
+            {/* Growth Arrow on O */}
+            <g transform="translate(18, 12)">
+              {/* Arrow shaft */}
+              <path d="M 0,8 L 12,0" stroke="url(#textGradient)" strokeWidth="3" strokeLinecap="round" className="arrow-shaft" />
+              {/* Arrow head */}
+              <path d="M 8,-2 L 12,0 L 10,4" stroke="url(#textGradient)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none" className="arrow-head" />
+            </g>
+
             {/* Stack text with integrated cubes */}
             <text x="10" y="72" fontFamily="'Arial Black', sans-serif" fontSize="36" fontWeight="900" fill="url(#textGradient)" letterSpacing="-1">St</text>
 
@@ -217,6 +225,32 @@ const Navbar = ({ onLogoClick }) => {
           opacity: 1;
           animation: colorShift 8s ease-in-out infinite 5.2s;
         }
+
+        /* Growth Arrow with dynamic colors */
+        .arrow-shaft,
+        .arrow-head {
+          stroke: #ff1cf7;
+          animation: arrowColorShift 8s ease-in-out infinite;
+        }
+
+        @keyframes arrowColorShift {
+          0% {
+            stroke: #ff1cf7;
+          }
+          25% {
+            stroke: #4285f4;
+          }
+          50% {
+            stroke: #24c1e0;
+          }
+          75% {
+            stroke: #a142f4;
+          }
+          100% {
+            stroke: #ff1cf7;
+          }
+        }
+        
         
         
         
