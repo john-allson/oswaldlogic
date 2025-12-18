@@ -63,7 +63,24 @@ const Navbar = ({ onLogoClick }) => {
     <header className={`header ${scrolled ? 'scrolled' : ''}`}>
       <nav className="navbar">
         <div className="logo" onClick={handleLogoClick} style={{ cursor: onLogoClick ? 'pointer' : 'default' }}>
-          <img src="/logo.png" alt="Oswald Stack" className="logo-img" />
+          <svg width="180" height="50" viewBox="0 0 180 50" fill="none" xmlns="http://www.w3.org/2000/svg" className="logo-svg">
+            <defs>
+              <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" className="gradient-stop-1" />
+                <stop offset="50%" className="gradient-stop-2" />
+                <stop offset="100%" className="gradient-stop-3" />
+              </linearGradient>
+            </defs>
+
+            <text x="5" y="22" fontFamily="Arial, sans-serif" fontSize="20" fontWeight="800" fill="url(#textGradient)">Oswald</text>
+            <text x="5" y="42" fontFamily="Arial, sans-serif" fontSize="20" fontWeight="800" fill="url(#textGradient)">Stack</text>
+
+            <g transform="translate(100, 28)">
+              <path d="M 0,0 L 8,4 L 8,12 L 0,8 Z" className="cube-face-1" />
+              <path d="M 8,4 L 16,0 L 16,8 L 8,12 Z" className="cube-face-2" />
+              <path d="M 0,0 L 8,4 L 16,0 L 8,-4 Z" className="cube-face-3" />
+            </g>
+          </svg>
         </div>
 
         <div className={`nav-links ${isOpen ? 'active' : ''}`}>
@@ -118,20 +135,76 @@ const Navbar = ({ onLogoClick }) => {
           align-items: center;
         }
 
-        .logo-img {
+        .logo-svg {
           height: 45px;
           width: auto;
-          transition: transform 0.3s ease, filter 0.3s ease;
+          transition: transform 0.3s ease;
         }
 
-        .logo:hover .logo-img {
+        .logo:hover .logo-svg {
           transform: scale(1.05);
-          filter: brightness(1.1);
         }
 
-        .header.scrolled .logo-img {
+        .header.scrolled .logo-svg {
           height: 40px;
         }
+
+        /* Dynamic color animation for gradient stops */
+        @keyframes colorShift {
+          0% {
+            stop-color: #ff1cf7;
+          }
+          25% {
+            stop-color: #4285f4;
+          }
+          50% {
+            stop-color: #24c1e0;
+          }
+          75% {
+            stop-color: #a142f4;
+          }
+          100% {
+            stop-color: #ff1cf7;
+          }
+        }
+
+        .gradient-stop-1 {
+          stop-color: #ff1cf7;
+          stop-opacity: 1;
+          animation: colorShift 8s ease-in-out infinite;
+        }
+
+        .gradient-stop-2 {
+          stop-color: #b249f8;
+          stop-opacity: 1;
+          animation: colorShift 8s ease-in-out infinite 2.6s;
+        }
+
+        .gradient-stop-3 {
+          stop-color: #a142f4;
+          stop-opacity: 1;
+          animation: colorShift 8s ease-in-out infinite 5.2s;
+        }
+
+        /* Cube faces with dynamic colors */
+        .cube-face-1 {
+          fill: #ff1cf7;
+          opacity: 0.8;
+          animation: colorShift 8s ease-in-out infinite;
+        }
+
+        .cube-face-2 {
+          fill: #b249f8;
+          opacity: 0.9;
+          animation: colorShift 8s ease-in-out infinite 2.6s;
+        }
+
+        .cube-face-3 {
+          fill: #a142f4;
+          opacity: 1;
+          animation: colorShift 8s ease-in-out infinite 5.2s;
+        }
+        
         
         
         .nav-links ul {
