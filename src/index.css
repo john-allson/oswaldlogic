@@ -1,0 +1,296 @@
+/* Global Styles & Variables */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    /* Google Antigravity Palette (Analyzed) */
+    --bg-primary: #000000;
+    /* Pure Black */
+    --bg-secondary: #0a0a0a;
+    /* Almost Black / Dark Gradient Base */
+    --bg-card: rgba(255, 255, 255, 0.03);
+
+    --text-primary: #FFFFFF;
+    --text-secondary: #9AA0A6;
+    /* Cool Grey */
+    --text-tertiary: #5F6368;
+
+    /* Neon Accents */
+    --neon-blue: #4285F4;
+    --neon-purple: #A142F4;
+    --neon-green: #24C1E0;
+    --neon-red: #EA4335;
+
+    --border-color: #333333;
+    --border-hover: #555555;
+
+    --transition-speed: 0.3s;
+    --font-main: 'Plus Jakarta Sans', sans-serif;
+
+    --radius-sm: 12px;
+    --radius-md: 24px;
+    --radius-lg: 32px;
+    --radius-full: 999px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    line-height: 1.6;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-main);
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all var(--transition-speed) ease;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Utility Classes */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.section-header {
+    margin-bottom: 5rem;
+    text-align: center;
+    /* Centered by default for this design */
+}
+
+.section-header h2 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    letter-spacing: -0.03em;
+}
+
+.underline {
+    height: 4px;
+    width: 60px;
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+    border-radius: 2px;
+    margin: 0 auto;
+}
+
+section {
+    padding: 8rem 0;
+    position: relative;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2.5rem;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
+    font-size: 1rem;
+    border: none;
+    letter-spacing: 0.5px;
+}
+
+.primary-btn {
+    background-color: var(--neon-blue);
+    color: var(--text-primary);
+    box-shadow: 0 4px 15px rgba(66, 133, 244, 0.3);
+}
+
+.primary-btn:hover {
+    background-color: #3b78e7;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(66, 133, 244, 0.4);
+}
+
+.secondary-btn {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.secondary-btn:hover {
+    border-color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Golden Neon Electric Arc Effect */
+:root {
+    --arc-gold: #FFD700;
+    --arc-orange: #FF8C00;
+    --arc-yellow: #FFF700;
+}
+
+@keyframes electric-arc {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0.8) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(180deg);
+    }
+}
+
+@keyframes spark-pulse {
+    0%, 100% {
+        box-shadow: 
+            0 0 10px var(--arc-gold),
+            0 0 20px var(--arc-gold),
+            0 0 30px var(--arc-orange),
+            0 0 40px var(--arc-orange);
+    }
+    50% {
+        box-shadow: 
+            0 0 20px var(--arc-gold),
+            0 0 30px var(--arc-gold),
+            0 0 40px var(--arc-orange),
+            0 0 60px var(--arc-orange),
+            0 0 80px var(--arc-yellow);
+    }
+}
+
+@keyframes arc-rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes glow-pulse {
+    0%, 100% {
+        filter: brightness(1) drop-shadow(0 0 5px var(--arc-gold));
+    }
+    50% {
+        filter: brightness(1.5) drop-shadow(0 0 15px var(--arc-gold)) drop-shadow(0 0 25px var(--arc-orange));
+    }
+}
+
+/* Icon wrapper with electric arc effect */
+.icon-electric-wrapper {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-electric-wrapper::before,
+.icon-electric-wrapper::after {
+    content: '';
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.icon-electric-wrapper::before {
+    border-top-color: var(--arc-gold);
+    border-right-color: var(--arc-orange);
+    animation: arc-rotate 1.5s linear infinite;
+}
+
+.icon-electric-wrapper::after {
+    border-bottom-color: var(--arc-gold);
+    border-left-color: var(--arc-yellow);
+    animation: arc-rotate 1.5s linear infinite reverse;
+}
+
+.icon-electric-wrapper:hover::before,
+.icon-electric-wrapper:hover::after {
+    opacity: 1;
+}
+
+.icon-electric-wrapper:hover i,
+.icon-electric-wrapper:hover svg {
+    animation: glow-pulse 1s ease-in-out infinite;
+    color: var(--arc-gold) !important;
+}
+
+/* Alternative electric arc for containers */
+.electric-arc-container {
+    position: relative;
+}
+
+.electric-arc-container::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        var(--arc-gold), 
+        var(--arc-orange), 
+        var(--arc-yellow), 
+        var(--arc-gold)
+    );
+    border-radius: inherit;
+    opacity: 0;
+    z-index: -1;
+    filter: blur(8px);
+    transition: opacity 0.3s ease;
+    animation: arc-rotate 3s linear infinite;
+    background-size: 200% 200%;
+}
+
+.electric-arc-container:hover::before {
+    opacity: 0.6;
+    animation: arc-rotate 2s linear infinite, spark-pulse 1.5s ease-in-out infinite;
+}
