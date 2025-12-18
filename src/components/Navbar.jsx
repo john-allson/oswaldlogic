@@ -63,45 +63,7 @@ const Navbar = ({ onLogoClick }) => {
     <header className={`header ${scrolled ? 'scrolled' : ''}`}>
       <nav className="navbar">
         <div className="logo" onClick={handleLogoClick} style={{ cursor: onLogoClick ? 'pointer' : 'default' }}>
-          <svg width="200" height="60" viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="logo-svg">
-            <defs>
-              <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" className="gradient-stop-1" />
-                <stop offset="50%" className="gradient-stop-2" />
-                <stop offset="100%" className="gradient-stop-3" />
-              </linearGradient>
-            </defs>
-
-            {/* Oswald text */}
-            <text x="10" y="38" fontFamily="'Arial Black', sans-serif" fontSize="36" fontWeight="900" fill="url(#textGradient)" letterSpacing="-1">Oswald</text>
-
-            {/* Growth Arrow on O */}
-            <g transform="translate(18, 12)">
-              {/* Arrow shaft */}
-              <path d="M 0,8 L 12,0" stroke="url(#textGradient)" strokeWidth="3" strokeLinecap="round" className="arrow-shaft" />
-              {/* Arrow head */}
-              <path d="M 8,-2 L 12,0 L 10,4" stroke="url(#textGradient)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none" className="arrow-head" />
-            </g>
-
-            {/* Stack text with integrated cubes */}
-            <text x="10" y="72" fontFamily="'Arial Black', sans-serif" fontSize="36" fontWeight="900" fill="url(#textGradient)" letterSpacing="-1">St</text>
-
-            {/* 3D Stacked Cubes (replacing 'a' in Stack) */}
-            <g transform="translate(70, 48)">
-              {/* Bottom cube */}
-              <path d="M 0,12 L 10,6 L 10,16 L 0,22 Z" className="cube-left" />
-              <path d="M 10,6 L 20,12 L 20,22 L 10,16 Z" className="cube-right" />
-              <path d="M 0,12 L 10,6 L 20,12 L 10,18 Z" className="cube-top" />
-
-              {/* Top cube */}
-              <path d="M 0,0 L 10,-6 L 10,4 L 0,10 Z" className="cube-left" />
-              <path d="M 10,-6 L 20,0 L 20,10 L 10,4 Z" className="cube-right" />
-              <path d="M 0,0 L 10,-6 L 20,0 L 10,6 Z" className="cube-top" />
-            </g>
-
-            {/* Continue 'ck' after cubes */}
-            <text x="100" y="72" fontFamily="'Arial Black', sans-serif" fontSize="36" fontWeight="900" fill="url(#textGradient)" letterSpacing="-1">ck</text>
-          </svg>
+          <span className="logo-text">Oswald Stack</span>
         </div>
 
         <div className={`nav-links ${isOpen ? 'active' : ''}`}>
@@ -156,104 +118,21 @@ const Navbar = ({ onLogoClick }) => {
           align-items: center;
         }
 
-        .logo-svg {
-          height: 50px;
-          width: auto;
+        .logo-text {
+          font-size: 1.8rem;
+          font-weight: 700;
+          color: #ffffff;
+          letter-spacing: 0.5px;
           transition: transform 0.3s ease;
         }
 
-        .logo:hover .logo-svg {
+        .logo:hover .logo-text {
           transform: scale(1.05);
         }
 
-        .header.scrolled .logo-svg {
-          height: 42px;
+        .header.scrolled .logo-text {
+          font-size: 1.5rem;
         }
-
-        /* Dynamic color animation for gradient stops */
-        @keyframes colorShift {
-          0% {
-            stop-color: #ff1cf7;
-          }
-          25% {
-            stop-color: #4285f4;
-          }
-          50% {
-            stop-color: #24c1e0;
-          }
-          75% {
-            stop-color: #a142f4;
-          }
-          100% {
-            stop-color: #ff1cf7;
-          }
-        }
-
-        .gradient-stop-1 {
-          stop-color: #ff1cf7;
-          stop-opacity: 1;
-          animation: colorShift 8s ease-in-out infinite;
-        }
-
-        .gradient-stop-2 {
-          stop-color: #b249f8;
-          stop-opacity: 1;
-          animation: colorShift 8s ease-in-out infinite 2.6s;
-        }
-
-        .gradient-stop-3 {
-          stop-color: #a142f4;
-          stop-opacity: 1;
-          animation: colorShift 8s ease-in-out infinite 5.2s;
-        }
-
-        /* Cube faces with dynamic colors - matching original design */
-        .cube-left {
-          fill: #ff1cf7;
-          opacity: 0.7;
-          animation: colorShift 8s ease-in-out infinite;
-        }
-
-        .cube-right {
-          fill: #b249f8;
-          opacity: 0.85;
-          animation: colorShift 8s ease-in-out infinite 2.6s;
-        }
-
-        .cube-top {
-          fill: #a142f4;
-          opacity: 1;
-          animation: colorShift 8s ease-in-out infinite 5.2s;
-        }
-
-        /* Growth Arrow with dynamic colors */
-        .arrow-shaft,
-        .arrow-head {
-          stroke: #ff1cf7;
-          animation: arrowColorShift 8s ease-in-out infinite;
-        }
-
-        @keyframes arrowColorShift {
-          0% {
-            stroke: #ff1cf7;
-          }
-          25% {
-            stroke: #4285f4;
-          }
-          50% {
-            stroke: #24c1e0;
-          }
-          75% {
-            stroke: #a142f4;
-          }
-          100% {
-            stroke: #ff1cf7;
-          }
-        }
-        
-        
-        
-        
         
         .nav-links ul {
           display: flex;
