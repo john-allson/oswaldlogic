@@ -63,7 +63,7 @@ const Navbar = ({ onLogoClick }) => {
     <header className={`header ${scrolled ? 'scrolled' : ''}`}>
       <nav className="navbar">
         <div className="logo" onClick={handleLogoClick} style={{ cursor: onLogoClick ? 'pointer' : 'default' }}>
-          <h1>Oswald Stack</h1>
+          <img src="/logo.png" alt="Oswald Stack" className="logo-img" />
         </div>
 
         <div className={`nav-links ${isOpen ? 'active' : ''}`}>
@@ -113,12 +113,26 @@ const Navbar = ({ onLogoClick }) => {
           margin: 0 auto;
         }
         
-        .logo h1 {
-          font-size: 1.5rem;
-          font-weight: 800;
-          letter-spacing: -0.02em;
-          color: var(--text-primary);
+        .logo {
+          display: flex;
+          align-items: center;
         }
+
+        .logo-img {
+          height: 45px;
+          width: auto;
+          transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .logo:hover .logo-img {
+          transform: scale(1.05);
+          filter: brightness(1.1);
+        }
+
+        .header.scrolled .logo-img {
+          height: 40px;
+        }
+        
         
         .nav-links ul {
           display: flex;
