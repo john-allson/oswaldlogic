@@ -86,6 +86,7 @@ const Navbar = ({ onLogoClick }) => {
         <i className="fas fa-bars open-menu" onClick={toggleMenu}></i>
       </nav>
 
+
       <style jsx>{`
         .header {
           position: fixed;
